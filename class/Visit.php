@@ -17,7 +17,8 @@ class Visit{
         $manager = fopen($this->file, "r");
 
         while (($element = fgetcsv($manager)) !== false) {
-            
+
+
             array_push(
                 $this->patients,
                 new Hospital(...$element) //Spread Operator
@@ -46,7 +47,7 @@ class Visit{
 
             $output .= "<tr>";
             
-            $output .= "<td>" . $id . "</td>";
+            $output .= "<td>" . $name . "</td>";
             $output .= $this->isVip($amount) . $amount . "</td>";
             $output .= "<td>" . $date . "</td>";
             
@@ -66,11 +67,11 @@ class Visit{
         return $output;
     }
 
-    public function getCustomerById($idCliente)
+    public function getCustomerById($idpatient)
     {
         foreach ($this->patients as $patient) {
 
-            if ($patinet->getId() == $idpatient) {
+            if ($patient->getId() == $idpatient) {
                 $patientwanted = $patient;
             }
         }
@@ -92,7 +93,18 @@ class Visit{
             }
             return $vip;
         }
+    
+    public function persist(){
+            
+        $handle = fopen($this->file, 'w');
         
+        foreach ($this->patients as $patient) {
+                
+            fputcsv($handle, [$cliente->getId(), $cliente->getName(), $cliente->getAmount(), $cliente->getDate(), $cliente->getActive()]);
+        }
+        
+        fclose($handle);
+    }
 }
 
 ?>

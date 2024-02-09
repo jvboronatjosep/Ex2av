@@ -8,7 +8,7 @@ require_once "autoloader.php";
     <link rel="stylesheet" href="style.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crud</title>
+    <title>Ex</title>
     <style></style>
 </head>
 
@@ -22,7 +22,7 @@ require_once "autoloader.php";
     <table class="redTable">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Name</th>
                 <th>Amount</th>
                 <th>Date</th>
                 <th>Pay</th>
@@ -32,7 +32,7 @@ require_once "autoloader.php";
 
         <?php   
                 if (!isset($ObjetoCartera)) {
-                    $ObjetoCartera = new Visit("data.csv");
+                    $ObjetoCartera = new Visit("datanew.csv");
                     
                 }
                 

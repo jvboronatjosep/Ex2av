@@ -2,17 +2,17 @@
 
 class Hospital{
     protected $id;
-    protected $company;
-    protected $investment;
+    protected $name;
+    protected $amount;
     protected $date;
-    protected $active;
+    protected $pay;
 
-    function __construct($id, $company, $investment, $date, $active){
+    function __construct($id, $name, $amount, $date, $pay){
         $this->id = $id;
-        $this->company = $company;
-        $this->investment = $investment;
+        $this->name = $name;
+        $this->amount = $amount;
         $this->date = $date;
-        $this->active =$active;
+        $this->pay =$pay;
     }
 
     public function getId()
@@ -27,7 +27,7 @@ class Hospital{
 
     public function getName()
     {
-        return $this->company;
+        return $this->name;
     }
 
     public function setName($name)
@@ -38,7 +38,7 @@ class Hospital{
 
     public function getAmount()
     {
-        return $this->investment;
+        return $this->amount;
     }
     public function setAmount($amount)
     {
@@ -61,7 +61,7 @@ class Hospital{
 
     public function getPay()
     {
-        return  $this->pay;
+        return $this->pay;
     }
 
     public function setPay($pay)
