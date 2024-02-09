@@ -10,16 +10,23 @@ require_once "autoloader.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ex</title>
     <style></style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 
 
 <body>
-    <form action="new.php" method="GET">
-        <input type="submit" value="Crear Nuevo cliente">
-    </form>
+<div class="container">
+
+
+
+<form action="new.php" method="GET">
+    <input type="image" src="img/new.png" alt="Enviar" class="boton-imagen">
+</form>
+
+
     
-    <table class="redTable">
+    <table class="table table-success table-striped-columns table-hover">
         <thead>
             <tr>
                 <th>Name</th>
@@ -48,6 +55,8 @@ require_once "autoloader.php";
         </tbody>
     </table>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </div>
 </body>
 
 </html>

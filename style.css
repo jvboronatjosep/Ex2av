@@ -76,10 +76,15 @@ table.redTable tfoot .links a:hover {
     color: #333333; 
 }
 
-.paid {
+.pay {
     width: 20px;
     height: 20px;
     background-color: #28a745; /* Verde */
     border-radius: 50%;
     display: inline-block;
+}
+
+.boton-imagen {
+    width: 20px; 
+    height: 20px; 
 }

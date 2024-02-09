@@ -42,11 +42,10 @@
 </head>
 <body>
     
-</body>
-</html>
+
 <form action="" method="POST" name="Patients">
     <div>
-        <label for="id">Id:</label>
+        <label for="id">Id: <?php echo $patient->getId() ?></label>
         <input type="text" id="id" name="id" hidden value="<?php echo $patient->getId() ?>">
     </div>
     <div>
@@ -69,3 +68,5 @@
         <input type="submit" value="Guardar">
     </div>
 </form>
+</body>
+</html>

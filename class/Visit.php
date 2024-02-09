@@ -48,13 +48,12 @@ class Visit{
             $output .= "<tr>";
             $output .= $this->isPaid($amount) . $name . "</td>";
             $output .= "<td>" . $amount . "</td>";
-            
             $output .= "<td>" . $date . "</td>";
             
             if ($pay === "True") {
-                $output .= "<td><img class='activo' src='img/img05.gif'></td>";
+                $output .= "<td><img class='pay' src='img/pagado.png'></td>";
             } else {
-                $output .= "<td><img class='activo' src='img/.png'></td>";
+                $output .= "<td><img class='pay' src='img/nopagado.png'></td>";
             }
 
             $output .= "<td>" . "<a href='delete.php?id=". $id ."'><img src='img/borrar.png' width='25'></a></td>";
@@ -82,7 +81,7 @@ class Visit{
 
     public function setClientes($patients, $num)
     {
-        $this->clientes[$num] = $clientes;
+        $this->patients[$num] = $patients;
     }
 
     function isPaid($amount) {
@@ -138,6 +137,34 @@ class Visit{
         $this->persist();
     }
     
+
+    function new($Newpatientdata) {
+
+        $allowedcharacters = '0123456789';
+        
+        $id = strtoupper(substr(str_shuffle($allowedcharacters), 0, 100000000));
+                    
+        $nameNew = $Newpatientdata['name'];
+        $amountNew = $Newpatientdata['amount'];
+        $dateNew = $Newpatientdata['date'];
+        
+        if (isset($Newpatientdata['pay']))
+        {
+            $payNew = "True";
+        }
+        else
+        {
+            $payNew = "False";
+        }
+            
+        
+        $patient = new Hospital($id, $nameNew, $amountNew, $dateNew, $payNew );
+
+        $this->patients[] = $patient;
+
+        // Llamar a persist
+        $this->persist();
+    }
     
     public function persist(){
             
