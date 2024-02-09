@@ -37,7 +37,7 @@ class Visit{
 
             $id = $patient->getId();
 
-            $newpatient = $this->getCustomerById($id);
+            $newpatient = $this->getPatientById($id);
             
             
             $name = $newpatient->getName();
@@ -67,7 +67,7 @@ class Visit{
         return $output;
     }
 
-    public function getCustomerById($idpatient)
+    public function getPatientById($idpatient)
     {
         foreach ($this->patients as $patient) {
 
@@ -109,6 +109,34 @@ class Visit{
         $this->persist();
     }      
     
+
+    
+    function update($Updateddata) {   
+        // Obtener el cliente con $id
+        $patinet = $this->getPatientById($Updateddata['id']);
+        
+        $NameNew = $Updateddata['name'];
+        $AmountNew = $Updateddata['amount'];
+        $DateNew = $Updateddata['date'];
+        
+        if (isset($Updateddata['pay']))
+        {
+            $PayNew = "True";
+        }
+        else
+        {
+            $PayNew = "False";
+        }          
+
+        // Actualizar el cliente con datosActualizados            
+        $patinet->setName($NameNew);
+        $patinet->setAmount($AmountNew);
+        $patinet->setDate($DateNew);
+        $patinet->setPay($PayNew);
+
+        // Llamar a persist
+        $this->persist();
+    }
     
     
     public function persist(){
