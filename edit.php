@@ -9,22 +9,22 @@
             $id = $_GET['id'];
 
         // Crear objeto cartera
-        $visit = new Visit("datanew.csv");
+        $VisitManagement = new VisitManagement("datanew.csv");
 
         // Obtener datos del cliente con id pasado(*)
-        $patient = $visit->getPatientById($id);     
+        $visit = $VisitManagement->getVisitById($id);     
         }
     }
     else {        
 
        // Cuando cargo este arhivo con un método POST
-        $UpdatedPatientsdata = $_POST;
+        $UpdatedVisitdata = $_POST;
 
         // Crear objeto cartera
-        $visit = new Visit("datanew.csv");
+        $VisitManagement = new VisitManagement("datanew.csv");
         
         // Llamo a update para actualizar la lista
-        $visit->update($UpdatedPatientsdata);  
+        $VisitManagement->update($UpdatedVisitdata);  
         
         header("location: index.php");
         
@@ -43,26 +43,26 @@
 <body>
     
 
-<form action="" method="POST" name="Patients">
+<form action="" method="POST" name="Visit">
     <div>
-        <label for="id">Id: <?php echo $patient->getId() ?></label>
-        <input type="text" id="id" name="id" hidden value="<?php echo $patient->getId() ?>">
+        <label for="id">Id: <?php echo $visit->getId() ?></label>
+        <input type="text" id="id" name="id" hidden value="<?php echo $visit->getId() ?>">
     </div>
     <div>
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="<?php echo $patient->getName() ?>">
+        <input type="text" id="name" name="name" value="<?php echo $visit->getName() ?>">
     </div>
     <div>
         <label for="amount">Amount:</label>
-        <input type="number" id="amount" name="amount" value="<?php echo $patient->getAmount() ?>">
+        <input type="number" id="amount" name="amount" value="<?php echo $visit->getAmount() ?>">
     </div>
     <div>
         <label for="date">Date:</label>
-        <input type="date" id="date" name="date" value="<?php echo $patient->getDate() ?>">
+        <input type="date" id="date" name="date" value="<?php echo $visit->getDate() ?>">
     </div>
     <div>
         <label for="pay">Pay:</label>
-        <input type="checkbox" id="pay" name="pay" <?php echo ($patient->getPay() === "True" ? 'checked' : ''); ?>>
+        <input type="checkbox" id="pay" name="pay" <?php echo ($visit->getPay() === "True" ? 'checked' : ''); ?>>
     </div>
     <div>
         <input type="submit" value="Guardar">

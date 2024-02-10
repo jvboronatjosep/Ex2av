@@ -80,7 +80,7 @@ table.redTable tfoot .links a:hover {
     width: 20px;
     height: 20px;
     background-color: #28a745; /* Verde */
-    border-radius: 50%;
+    border-radius: 25%;
     display: inline-block;
 }
 

@@ -1,7 +1,7 @@
 <?php
 
     require_once 'autoloader.php';
-    $patients = "";
+    $visits = "";
     $error = "";
 
     if ($_SERVER["REQUEST_METHOD"] ===  "GET") {
@@ -17,10 +17,10 @@
         else
         {
              // Crear objeto cartera
-            $patients = new Visit("datanew.csv");
+            $VisitManagement = new VisitManagement("datanew.csv");
             
             // Llamo a create para actualizar la lista
-            $patients->new($_POST);  
+            $VisitManagement->new($_POST);  
             
             header("location: index.php");
             
@@ -42,7 +42,7 @@
 <body>
     
 
-<form action="" method="POST" name="Patients">
+<form action="" method="POST" name="Visits">
     <div>
         <label for="id">Id:</label>
         <input type="text" id="id" name="id" hidden>

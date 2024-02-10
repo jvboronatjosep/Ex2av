@@ -20,30 +20,23 @@ require_once "autoloader.php";
 
 
 
-<form action="new.php" method="GET">
-    <input type="image" src="img/new.png" alt="Enviar" class="boton-imagen">
-</form>
-
 
     
     <table class="table table-success table-striped-columns table-hover">
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Amount</th>
-                <th>Date</th>
-                <th>Pay</th>
-                <th colspan="2" >Action</th>
+                <th>Address</th>
             </tr>
         </thead>
 
         <?php   
-                if (!isset($VisitManagement)) {
-                    $VisitManagement = new VisitManagement("datanew.csv");
+                if (!isset($PatientManagement)) {
+                    $PatientManagement = new PatientManagement("datapatinets.csv");
                     
                 }
                 
-                echo $VisitManagement->drawList();
+                echo $PatientManagement->drawList();
         ?>
 
         <tfoot>
