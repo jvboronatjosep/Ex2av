@@ -18,7 +18,9 @@ require_once "autoloader.php";
 <body>
 <div class="container">
 
-
+<form action="newpatients.php" method="GET">
+    <input type="image" src="img/new.png" alt="Enviar" class="boton-imagen">
+</form>
 
     
     <table class="table table-success table-striped-columns table-hover">

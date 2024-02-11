@@ -104,35 +104,25 @@ class PatientManagement{
         $this->persist();
     }
     
-/*
-    function new($Newvisitdata) {
+
+    function new($Newpatientdata) {
 
         $allowedcharacters = '0123456789';
         
         $id = strtoupper(substr(str_shuffle($allowedcharacters), 0, 100000000));
                     
-        $nameNew = $Newvisitdata['name'];
-        $amountNew = $Newvisitdata['amount'];
-        $dateNew = $Newvisitdata['date'];
-        
-        if (isset($Newvisitdata['pay']))
-        {
-            $payNew = "True";
-        }
-        else
-        {
-            $payNew = "False";
-        }
+        $nameNew = $Newpatientdata['name'];
+        $addressNew = $Newpatientdata['address'];
             
         
-        $visit = new Visit($id, $nameNew, $amountNew, $dateNew, $payNew );
+        $patient = new Patient($id, $nameNew, $addressNew);
 
-        $this->visits[] = $visit;
+        $this->patients[] = $patient;
 
         // Llamar a persist
         $this->persist();
     }
-*/
+
     
         public function persist(){
             
