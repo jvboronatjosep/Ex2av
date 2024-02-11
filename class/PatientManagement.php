@@ -49,7 +49,7 @@ class PatientManagement{
             
 
             $output .= "<td>" . "<a href='deletepatients.php?id=". $id ."'><img src='img/borrar.png' width='25'></a></td>";
-            $output .= "<td><a href='edit.php?id=" . $id . "'><img src='img/editar.png' width='25'></a></td>";        
+            $output .= "<td><a href='editpatients.php?id=" . $id . "'><img src='img/editar.png' width='25'></a></td>";        
             
             $output .= "</tr>";
         }
@@ -87,36 +87,24 @@ class PatientManagement{
         $this->persist();
     }      
     
-/*
+
     
     function update($Updateddata) {   
         // Obtener el cliente con $id
-        $visit = $this->getvisitById($Updateddata['id']);
+        $patient = $this->getpatientById($Updateddata['id']);
         
         $NameNew = $Updateddata['name'];
-        $AmountNew = $Updateddata['amount'];
-        $DateNew = $Updateddata['date'];
-        
-        if (isset($Updateddata['pay']))
-        {
-            $PayNew = "True";
-        }
-        else
-        {
-            $PayNew = "False";
-        }          
+        $AddressNew = $Updateddata['address'];
 
         // Actualizar el cliente con datosActualizados            
-        $visit->setName($NameNew);
-        $visit->setAmount($AmountNew);
-        $visit->setDate($DateNew);
-        $visit->setPay($PayNew);
+        $patient->setName($NameNew);
+        $patient->setAddress($AddressNew);
 
         // Llamar a persist
         $this->persist();
     }
     
-
+/*
     function new($Newvisitdata) {
 
         $allowedcharacters = '0123456789';
