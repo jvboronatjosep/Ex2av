@@ -20,19 +20,20 @@ require_once "autoloader.php";
 
 
 
-
     
     <table class="table table-success table-striped-columns table-hover">
         <thead>
-            <tr>
+            <tr class='text-center'>
+                <th>Id</th>
                 <th>Name</th>
                 <th>Address</th>
+                <th colspan="2" >Action</th>
             </tr>
         </thead>
 
         <?php   
                 if (!isset($PatientManagement)) {
-                    $PatientManagement = new PatientManagement("datapatinets.csv");
+                    $PatientManagement = new PatientManagement("datapatients.csv");
                     
                 }
                 

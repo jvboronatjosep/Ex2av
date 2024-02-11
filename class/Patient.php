@@ -4,7 +4,7 @@ class Patient{
     protected $id;
     protected $name;
     protected $address;
-
+    
     function __construct($id, $name, $address){
         $this->id = $id;
         $this->name = $name;

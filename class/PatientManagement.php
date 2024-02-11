@@ -39,14 +39,18 @@ class PatientManagement{
 
             $newpatient = $this->getpatientById($id);
             
-            
             $name = $newpatient->getName();
             $address = $newpatient->getAddress();
 
             $output .= "<tr class='text-center'>";
+            $output .= "<td>" . $id . "</td>";
             $output .= "<td>" . $name . "</td>";
             $output .= "<td>" . $address . "</td>";
-        
+            
+
+            $output .= "<td>" . "<a href='deletepatients.php?id=". $id ."'><img src='img/borrar.png' width='25'></a></td>";
+            $output .= "<td><a href='edit.php?id=" . $id . "'><img src='img/editar.png' width='25'></a></td>";        
+            
             $output .= "</tr>";
         }
 
@@ -83,53 +87,77 @@ class PatientManagement{
         $this->persist();
     }      
     
-
+/*
     
     function update($Updateddata) {   
         // Obtener el cliente con $id
-        $patient = $this->getvisitById($Updateddata['id']);
+        $visit = $this->getvisitById($Updateddata['id']);
         
         $NameNew = $Updateddata['name'];
-        $AddressNew = $Updateddata['address'];         
+        $AmountNew = $Updateddata['amount'];
+        $DateNew = $Updateddata['date'];
+        
+        if (isset($Updateddata['pay']))
+        {
+            $PayNew = "True";
+        }
+        else
+        {
+            $PayNew = "False";
+        }          
 
         // Actualizar el cliente con datosActualizados            
-        $patient->setName($NameNew);
-        $patient->setAddress($AddressNew);
+        $visit->setName($NameNew);
+        $visit->setAmount($AmountNew);
+        $visit->setDate($DateNew);
+        $visit->setPay($PayNew);
 
         // Llamar a persist
         $this->persist();
     }
     
 
-    function new($Newpatientdata) {
+    function new($Newvisitdata) {
 
         $allowedcharacters = '0123456789';
         
         $id = strtoupper(substr(str_shuffle($allowedcharacters), 0, 100000000));
                     
         $nameNew = $Newvisitdata['name'];
-        $addressNew = $Newvisitdata['address'];
+        $amountNew = $Newvisitdata['amount'];
+        $dateNew = $Newvisitdata['date'];
+        
+        if (isset($Newvisitdata['pay']))
+        {
+            $payNew = "True";
+        }
+        else
+        {
+            $payNew = "False";
+        }
             
         
-        $patient = new Patient($id, $nameNew, $addressNew);
+        $visit = new Visit($id, $nameNew, $amountNew, $dateNew, $payNew );
 
-        $this->patients[] = $patient;
+        $this->visits[] = $visit;
 
         // Llamar a persist
         $this->persist();
     }
+*/
     
-    public function persist(){
+        public function persist(){
             
         $handle = fopen($this->file, 'w');
         
         foreach ($this->patients as $patient) {
                 
-            fputcsv($handle, [$patient->getId(), $patient->getName(), $patient->getAddres()]);
+            fputcsv($handle, [$patient->getId(), $patient->getName(), $patient->getAddress()]);
         }
         
         fclose($handle);
     }
-}
 
+
+}
 ?>

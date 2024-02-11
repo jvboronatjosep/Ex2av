@@ -28,7 +28,7 @@ require_once "autoloader.php";
     
     <table class="table table-success table-striped-columns table-hover">
         <thead>
-            <tr>
+            <tr class='text-center'>
                 <th>Name</th>
                 <th>Amount</th>
                 <th>Date</th>
