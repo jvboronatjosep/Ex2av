@@ -36,7 +36,6 @@ class PatientManagement{
         foreach ($this->patients as $patient) {
 
             $id = $patient->getId();
-
             $newpatient = $this->getpatientById($id);
             
             $name = $newpatient->getName();
@@ -49,7 +48,9 @@ class PatientManagement{
             
 
             $output .= "<td>" . "<a href='deletepatients.php?id=". $id ."'><img src='img/borrar.png' width='25'></a></td>";
-            $output .= "<td><a href='editpatients.php?id=" . $id . "'><img src='img/editar.png' width='25'></a></td>";        
+            $output .= "<td><a href='editpatients.php?id=" . $id . "'><img src='img/editar.png' width='25'></a></td>";
+            $output .= "<td><a href='newpatients.php?id=" . $id . "'><img src='img/new.png' width='25'></a></td>";   
+            $output .= "<td><a href='search.php?name=" . $name . "'><img src='img/buscar.png' width='25'></a></td>";        
             
             $output .= "</tr>";
         }
@@ -69,6 +70,21 @@ class PatientManagement{
 
         return $patientwanted;
     }
+    
+    public function getVisitsByPatientName($patientName) {
+        $foundVisits = [];
+        $visitManagement = new VisitManagement("datanew.csv"); // Supongo que tienes una clase VisitManagement
+        
+        foreach ($visitManagement->getVisits() as $visit) {
+            if ($visit->getPatientName() === $patientName) {
+                $foundVisits[] = $visit;
+            }
+        }
+        
+        return $foundVisits;
+    }
+    
+    
 
 
 
@@ -124,16 +140,77 @@ class PatientManagement{
     }
 
     
-        public function persist(){
+
+    function isPaid($amount) {
+        if ($amount > 250) {
+            return "<td class='paid'>";
+        } else {
+            return "<td class='nopaid'>";
+        }
+    }
+
+
+    public function search($namePacientToSearch){
+        $VisitsManagement = new VisitManagement("datanew.csv");
+
+        $visits = $VisitsManagement->GetList();
+
+
+        $output = "";  
+
+        foreach ($visits as $visit) {
             
-        $handle = fopen($this->file, 'w');
-        
-        foreach ($this->patients as $patient) {
+            $name = $visit->getName();            
+            
+            if ($namePacientToSearch === $name) {
+
+                $id = $visit->getId();
+                $amount = $visit->getAmount();
+                $date = $visit->getDate();
+                $pay = $visit->getPay();
+    
+                $output .= "<tr class='text-center'>";
+                $output .= "<td>" . $id . "</td>";
+                $output .= "<td>" . $name . "</td>";
+                $output .= $this->isPaid($amount) . $amount . "</td>";
+                $output .= "<td>" . $date . "</td>";
                 
-            fputcsv($handle, [$patient->getId(), $patient->getName(), $patient->getAddress()]);
+                if ($pay === "True") {
+                    $output .= "<td><img class='pay' src='img/pagado.png'></td>";
+                } else {
+                    $output .= "<td><img class='pay' src='img/nopagado.png'></td>";
+                }
+                
+    
+                $output .= "<td>" . "<a href='deletepatients.php?id=". $name ."'><img src='img/borrar.png' width='25'></a></td>";
+                $output .= "<td><a href='editpatients.php?id=" . $name . "'><img src='img/editar.png' width='25'></a></td>";
+                $output .= "<td><a href='newpatients.php?id=" . $name . "'><img src='img/new.png' width='25'></a></td>";   
+                
+                $output .= "</tr>";
+
+                
+                
+            }
+    
+            
+
+            }
+
+            return $output;
+
+    }
+
+
+    public function persist(){
+            
+    $handle = fopen($this->file, 'w');
+        
+    foreach ($this->patients as $patient) {
+                
+        fputcsv($handle, [$patient->getId(), $patient->getName(), $patient->getAddress()]);
         }
         
-        fclose($handle);
+    fclose($handle);
     }
 
 

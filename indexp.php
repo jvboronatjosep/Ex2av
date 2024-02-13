@@ -9,7 +9,6 @@ require_once "autoloader.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ex</title>
-    <style></style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
@@ -18,18 +17,17 @@ require_once "autoloader.php";
 <body>
 <div class="container">
 
-<form action="newpatients.php" method="GET">
-    <input type="image" src="img/new.png" alt="Enviar" class="boton-imagen">
-</form>
+    <nav>
+        <a href="index.php">Visit</a>
+    </nav>
 
-    
     <table class="table table-success table-striped-columns table-hover">
         <thead>
             <tr class='text-center'>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Address</th>
-                <th colspan="2" >Action</th>
+                <th colspan="4" >Action</th>
             </tr>
         </thead>
 

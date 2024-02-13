@@ -9,7 +9,6 @@ require_once "autoloader.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ex</title>
-    <style></style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
@@ -18,36 +17,37 @@ require_once "autoloader.php";
 <body>
 <div class="container">
 
-
     <nav>
-        <a href="indexp.php">Patients</a>
+        <a href="index.php">Visit</a>
+        <a href="indexp.php">Patinet</a>
     </nav>
 
-
-    
     <table class="table table-success table-striped-columns table-hover">
         <thead>
             <tr class='text-center'>
+                <th>Id</th>
                 <th>Name</th>
                 <th>Amount</th>
                 <th>Date</th>
                 <th>Pay</th>
-                <th colspan="4" >Action</th>
+                <th colspan="3">Action</th>
             </tr>
         </thead>
 
         <?php   
-                if (!isset($VisitManagement)) {
-                    $VisitManagement = new VisitManagement("datanew.csv");
-                    
+                if (!isset($PatientManagement)) {
+                    $PatientManagement = new PatientManagement("datanew.csv");
                 }
                 
-                echo $VisitManagement->drawList();
+                if (isset($_GET['name'])) {
+                    $name = $_GET['name'];
+                    echo $PatientManagement->search($name);
+                }
         ?>
 
         <tfoot>
             <tr>
-                <td colspan="7"></td>
+                <td colspan="8"></td>
             </tr>
         </tfoot>
         <tbody>

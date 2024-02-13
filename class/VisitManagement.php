@@ -10,6 +10,12 @@ class VisitManagement{
         $this->loadData();
     }
 
+    public function GetList() {
+        return $this->visits;
+    }
+
+
+
 
 
     public function loadData(){
@@ -57,7 +63,8 @@ class VisitManagement{
             }
 
             $output .= "<td>" . "<a href='delete.php?id=". $id ."'><img src='img/borrar.png' width='25'></a></td>";
-            $output .= "<td><a href='edit.php?id=" . $id . "'><img src='img/editar.png' width='25'></a></td>";        
+            $output .= "<td><a href='edit.php?id=" . $id . "'><img src='img/editar.png' width='25'></a></td>";    
+            $output .= "<td><a href='new.php?id=" . $id . "'><img src='img/new.png' width='25'></a></td>";     
             
             $output .= "</tr>";
         }
@@ -77,6 +84,21 @@ class VisitManagement{
 
         return $visitwanted;
     }
+
+    
+    public function searchVisitsByName($name) {
+        $foundVisits = [];
+    
+        foreach ($this->visits as $visit) {
+            if ($visit->getName() === $name) {
+                $foundVisits[] = $visit;
+            }
+        }
+    
+        return $foundVisits;
+    }
+    
+
 
 
     function isPaid($amount) {
