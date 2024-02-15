@@ -52,8 +52,8 @@ class VisitManagement{
             $pay = $newvisit->getPay();
 
             $output .= "<tr class='text-center'>";
-            $output .= $this->isPaid($amount) . $name . "</td>";
-            $output .= "<td>" . $amount . '&#8364' . "</td>";
+            $output .= "<td>" . $name . "</td>";
+            $output .= $this->greater_than($amount) . $amount . '&#8364' . "</td>";
             $output .= "<td>" . $date . "</td>";
             
             if ($pay === "True") {
@@ -101,9 +101,9 @@ class VisitManagement{
 
 
 
-    function isPaid($amount) {
+    function greater_than($amount) {
         if ($amount > 250) {
-            return "<td class='paid'>";
+            return "<td class='text-primary'>";
         } else {
             return "<td class='nopaid'>";
         }

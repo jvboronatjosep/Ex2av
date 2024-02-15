@@ -16,7 +16,7 @@
         else
         {
              // Crear objeto cartera
-            $PatientManagement = new PatientManagement("datapatients.csv");
+            $PatientManagement = new PatientManagement("datapatient.csv");
             
             // Llamo a create para actualizar la lista
             $PatientManagement->new($_POST);  
