@@ -89,3 +89,20 @@ table.redTable tfoot .links a:hover {
     height: 20px; 
 }
 
+nav {
+    background-color: #333333;
+    padding: 10px;
+}
+
+nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 8px 12px;
+    margin-right: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #555555;
+}

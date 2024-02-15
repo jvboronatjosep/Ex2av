@@ -194,6 +194,71 @@ class VisitManagement{
         
         fclose($handle);
     }
+
+    public function imovoiceamount (){
+        $totalamount = 0;
+        foreach ($this->visits as $visit) {
+            $totalamount += $visit->getAmount();
+        }
+        return $totalamount;
+    }
+
+    
+    public function total_paid_nopaid (){
+        $totalamount_paid = 0;
+        $totalamount_nopaid = 0;
+        
+        foreach ($this->visits as $visit) {
+            if ($visit->getPay() == "True") {
+                $totalamount_paid += $visit->getAmount();
+            }
+            else {
+                $totalamount_nopaid += $visit->getAmount();
+            }
+        }
+
+        return array($totalamount_paid, $totalamount_nopaid);
+    }
+
+
+    public function balance(){
+        $totalamount_paid = 0;
+        $totalamount_nopaid = 0;
+        foreach ($this->visits as $visit) {
+            if ($visit->getPay() == "True") {
+                $totalamount_paid += $visit->getAmount();
+            }
+            else {
+                $totalamount_nopaid += $visit->getAmount();
+            }
+        }
+        return $totalamount_paid - $totalamount_nopaid;
+    }
+
+
+
+
+    public function visits_paid_nopaid (){
+        $visits_paid = 0;
+        $visits_nopaid = 0;
+        
+        foreach ($this->visits as $visit) {
+            if ($visit->getPay() == "True") {
+                $visits_paid++;
+            }
+            else {
+                $visits_nopaid++;
+            }
+        }
+
+        return array($visits_paid, $visits_nopaid);
+    }
+
+    
+
+
+    
+
 }
 
 ?>

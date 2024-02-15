@@ -9,7 +9,7 @@
             $id = $_GET['id'];
 
         // Crear objeto cartera
-        $PatientManagement = new PatientManagement("datapatients.csv");
+        $PatientManagement = new PatientManagement("datapatient.csv");
 
         // Obtener datos del cliente con id pasado(*)
         $patient = $PatientManagement->getPatientById($id);     
@@ -21,7 +21,7 @@
         $UpdatedPatientdata = $_POST;
 
         // Crear objeto cartera
-        $PatientManagement = new PatientManagement("datapatients.csv");
+        $PatientManagement = new PatientManagement("datapatient.csv");
         
         // Llamo a update para actualizar la lista
         $PatientManagement->update($UpdatedPatientdata);  
@@ -38,10 +38,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="formm.css">
 </head>
 <body>
     
+<nav>
+        <a href="indexp.php">Return</a>
+</nav>
 
 <form action="" method="POST" name="Visit">
     <div>

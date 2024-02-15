@@ -5,7 +5,7 @@ require_once "autoloader.php";
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylee.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ex</title>
@@ -18,6 +18,7 @@ require_once "autoloader.php";
 <div class="container">
 
     <nav>
+        <a href="frontpage.php">Start</a>
         <a href="index.php">Visit</a>
         <a href="indexp.php">Patinet</a>
     </nav>

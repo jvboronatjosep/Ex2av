@@ -5,7 +5,7 @@ require_once "autoloader.php";
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylee.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ex</title>
@@ -15,10 +15,12 @@ require_once "autoloader.php";
 
 
 <body>
-<div class="container">
+<div class="container mt-2">
 
     <nav>
+        <a href="frontpage.php">Start</a>
         <a href="index.php">Visit</a>
+        <a href="stats.php">Stats</a>
     </nav>
 
     <table class="table table-success table-striped-columns table-hover">
@@ -33,7 +35,7 @@ require_once "autoloader.php";
 
         <?php   
                 if (!isset($PatientManagement)) {
-                    $PatientManagement = new PatientManagement("datapatients.csv");
+                    $PatientManagement = new PatientManagement("datapatient.csv");
                     
                 }
                 

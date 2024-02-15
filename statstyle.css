@@ -1,0 +1,67 @@
+/* Estilos para el cuerpo de la página */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+/* Estilos para el encabezado */
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    color: #333;
+}
+
+/* Estilos para la tabla de estadísticas */
+table {
+    border-collapse: collapse;
+    width: 60%;
+    margin: 30px auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Estilos para las filas pares de la tabla */
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Estilos para los enlaces */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+nav {
+    background-color: #333333;
+    padding: 10px;
+}
+
+nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 8px 12px;
+    margin-right: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #555555;
+}

@@ -149,7 +149,7 @@ class PatientManagement{
         }
     }
 
-
+    
     public function search($namePacientToSearch){
         $VisitsManagement = new VisitManagement("datanew.csv");
 
@@ -213,6 +213,68 @@ class PatientManagement{
     fclose($handle);
     }
 
+    public function total_patients() {
+        $uniqueNames = [];
+        $repeated = [];
+    
+        foreach ($this->patients as $patient) {
+            if (!isset($uniqueNames[$patient->getName()])) {
+                // Agregar el nombre al array de nombres únicos
+                $uniqueNames[$patient->getName()] = true;
+            } else {
+                // El nombre ya existe, agregarlo al array de repetidos
+                $repeated[] = $patient->getName();
+            }
+        }
+    
+        return count($uniqueNames);
+    }
+
+    public function unpaid_paid_visits(){
+        $paid = [];
+        $no_paid = [];
+        $VisitsManagement = new VisitManagement("datanew.csv");
+
+        $visits = $VisitsManagement->GetList();
+
+        foreach ($this->patients as $patient){
+            
+            $todas_visitas_pagadas = true;
+
+            foreach ($visits as $visit){
+
+                if($visit->GetName() == $patient->getName()){
+                    
+                    if ($visit->getPay() == "False"){
+                        $todas_visitas_pagadas = false;
+                    }
+                }
+            }
+
+            if ($todas_visitas_pagadas ===true)
+            {
+                if (!(in_array($patient->getName(), $paid))){
+                    $paid[] = $patient->getName();
+                }
+            }
+            else {
+                if (!(in_array($patient->getName(), $no_paid))){
+                    $no_paid[] = $patient->getName();
+                }   
+            }
+
+        }
+        $npaid = count($no_paid);
+        $n_no_paid = count($paid);
+
+        return array($npaid, $n_no_paid);
+    }
+
+
+
+    
+    
+    
 
 }
 ?>
